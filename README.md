@@ -1,4 +1,4 @@
-# Invoice Management System
+# Perfectly Fits Kitchen Renovation Management System
 
 This project is a full-stack application for managing invoices, built with Python Flask (backend) and React (frontend). It features a secure login system, LG-themed UI with a sidebar dashboard, and database storage for invoices and images.
 
