@@ -36,8 +36,7 @@ CORS(app, expose_headers=['Content-Disposition'], origins=[
 # Configuration - reads from environment variables (set in cPanel or .env)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
     'DATABASE_URL',
-    'mysql+pymysql://lg_pq_test:1OFOIi5&ovD7@118.139.163.148:3306/invoicedb?charset=utf8mb4'
-    # 'mysql+pymysql://lg_pq_test:1OFOIi5&ovD7@localhost:3306/invoicedb?charset=utf8mb4'
+    # ''
 )
 # Force utf8mb4 at the connection level so Arabic/Unicode is saved correctly
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
@@ -47,14 +46,9 @@ app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
 }
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uploads')
-app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'super-secret-key-CHANGE-THIS-IN-PRODUCTION')
+# app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', '')
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=24)
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-
-# cat > ~/api.perfectly-fits-ramadan-promotion.com/.env << 'END'
-# DATABASE_URL=mysql+pymysql://lg_pq_test:1OFOIi5&ovD7@localhost:3306/invoicedb
-# JWT_SECRET_KEY=super-secret-key-CHANGE-THIS-IN-PRODUCTION
-# END
 
 
 jwt = JWTManager(app)
