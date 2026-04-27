@@ -60,15 +60,15 @@ with app.app_context():
     db.create_all()
     # Seed super admin if no super admin exists
     if not User.query.filter_by(is_super_admin=True).first():
-        existing = User.query.filter_by(username='admin').first()
+        existing = User.query.filter_by(username='bb').first()
         if existing:
             existing.is_super_admin = True
         else:
-            hashed = bcrypt.hashpw('admin123'.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-            super_admin = User(username='admin', password_hash=hashed, is_super_admin=True)
+            hashed = bcrypt.hashpw('bb'.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+            super_admin = User(username='bb', password_hash=hashed, is_super_admin=True)
             db.session.add(super_admin)
         db.session.commit()
-        print('Super admin seeded (username: admin, password: admin123)')
+        print('Super admin seeded (username: bb, password: bb)')
 
     # Seed default system settings
     default_settings = [
