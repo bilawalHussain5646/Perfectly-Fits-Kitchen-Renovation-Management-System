@@ -1,0 +1,4 @@
+PassengerEnabled On
+PassengerAppRoot /home/bap4kgbp119t/perihelion-event
+PassengerAppType wsgi
+PassengerStartupFile passenger_wsgi.py

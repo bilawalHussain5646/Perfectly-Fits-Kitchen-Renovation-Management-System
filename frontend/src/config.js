@@ -1,0 +1,5 @@
+// Central API URL configuration
+// This automatically uses the right URL based on the build mode (.env.development or .env.production)
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+
+export default API_BASE_URL;
